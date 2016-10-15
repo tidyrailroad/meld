@@ -1,4 +1,9 @@
-FROM alpine:3.4
-ADD https://download.gnome.org/sources/meld/3.16/meld-3.16.3.tar.xz /opt/meld
-ENTRYPOINT ["/opt/meld/bin/meld"]
+FROM fedora:24
+RUN \
+    dnf update --assumeyes && \
+    dnf install --assumeyes meld && \
+    dnf update --assumeyes && \
+    dnf clean all &&
+    true
+ENTRYPOINT ["/usr/bin/meld"]]
 CMD [""]
